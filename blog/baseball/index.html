@@ -1,86 +1,91 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <head>
-        <link rel="shortcut icon" href="../../images/flavicon.png" />
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.dropotron.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/skel-layers.min.js"></script>
+    <script src="/js/init.js"></script>
+    <link rel="stylesheet" href="/css/pygment.css" />
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/style-noscript.css" />
+    </noscript>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link  href="http://fonts.googleapis.com/css?family=Anonymous+Pro:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+    <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie/v8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie/v9.css" /><![endif]-->
 
+    <title>Designing and Creating a Database | Jacob's Data Science Portfolio </title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Jacob Sørensen" />
-        <title>Designing and Creating a Database</title>
-        
-<meta name="description" content="&lt;p&gt;Baseball is a great topic to practice skills in data science. Because of the long history within baseball of the collection and analysis of statistics (most famously Sabermetrics featured in the movie Moneyball), there is a massive potential of answering a pletheora of questions regarding baseball. We will be working with a file of Major League Baseball games from Retrosheet. Retrosheet compiles detailed statistics on baseball games from the 1800s through today. With such a massive amount of data, it will be an ideal project to design and create a relational database which could store and retreive these data efficiently.&lt;/p&gt;" />
-<meta name="keywords" content=" python SQL SQLite normalization database primary key foreign key  "/>
+        <meta name="viewport" content="width=device-width">
+</head>
 
-        <!--[if !IE 7]>
-        <style type="text/css">
-            #main-content {display:table;height:100%}
-        </style>
-        <![endif]-->
-        <link rel="stylesheet" href="../../theme/css/backdrop.css" />
-        <link rel="stylesheet" href="../../theme/css/pygments.css" />
-        <script src="../../theme/js/modernizr.js"></script>
+<body class=" loading">
 
-        <link href="http://jcbsorensen.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jacob's Data Science Portfolio Full Atom Feed" />
-        <link href="http://jcbsorensen.github.io/feeds/data-retrieval-and-storing.atom.xml" type="application/atom+xml" rel="alternate" title="Jacob's Data Science Portfolio Categories Atom Feed" />
 
-    </head>
-      
 
-    <body>
-        <div class="master-row">
-
-            <div class="content-pane main-content">
-                <nav class="top-bar" data-topbar role="navigation">
-                    <ul class="title-area">
-                        <li class="name"><!-- Leave this empty --></li>
-                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+    <!-- Header -->
+    <header id="header" >
+        <h1 class="logo">
+            <a href="../..">Jacob's Data Science Portfolio, design Twenty <span> by html5 up</span></a>
+        </h1>
+        <nav id="nav">
+            <ul>
+                <!-- <li class="current"><a href="index.html">Welcome</a></li> -->
+                <li class="submenu">
+                    <a href="../../blog">Blog</a>
+                    <ul>
+                            <li >
+                                <a href="../../category/data exploration/">Data Exploration</a>
+                            </li>
+                            <li >
+                                <a href="../../category/data preparation/">Data Preparation</a>
+                            </li>
+                            <li class="active">
+                                <a href="../../category/data retrieval and storing/">Data Retrieval and Storing</a>
+                            </li>
                     </ul>
-                    <section class="top-bar-section">
-                        <ul class="left">
-                            <li><a href="../../welcome">Welcome to My Site!</a></li>
-                            <li><a href="../../education">Analytics Education</a></li>
-                        </ul>
-                        <ul class="right">
-                            <li><a href="../../category/data-exploration/">Data Exploration</a></li>
-                            <li><a href="../../category/data-preparation/">Data Preparation</a></li>
-                            <li class="active"><a href="../../category/data-retrieval-and-storing/">Data Retrieval and Storing</a></li>
-                        </ul>
-                    </section>
-                </nav>
+                </li>
+                <li><a href="#" class="button special">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
 
-                <div class="row title-bar">
-                    <div class="small-12 columns">
-                        <h1><a href="../..">Jacob's Data Science Portfolio</a></h1><h2> <small>Sharing My Passion</small></h2>
-                        <hr>
-                    </div>
-                </div>
-            
-                <div id="contents">
-<div class="row">
-    <div class="small-12 columns article">
-        <h2>Designing and Creating a Database</h2>
-        <div class="row info-bar" style="margin-left:0rem;margin-bottom:6px;">
-    <div class="small-12 columns">
-        <ul class="inline-list">
-            <li><span><i class="fa fa-calendar"></i>&nbsp; Tue 30 October 2018</span></li>
-            <li><span><i class="fa fa-folder-open"></i>&nbsp; <a href="../../category/data-retrieval-and-storing/">Data Retrieval and Storing</a></span></li>
-            <li>
-                <span>
-                    <i class="fa fa-tags"></i>&nbsp;
-                    <a href="../../tag/python.html"><span class="label">python</span></a>
-                    <a href="../../tag/sql.html"><span class="label">SQL</span></a>
-                    <a href="../../tag/sqlite.html"><span class="label">SQLite</span></a>
-                    <a href="../../tag/normalization.html"><span class="label">normalization</span></a>
-                    <a href="../../tag/database.html"><span class="label">database</span></a>
-                    <a href="../../tag/primary-key.html"><span class="label">primary key</span></a>
-                    <a href="../../tag/foreign-key.html"><span class="label">foreign key</span></a>
-                </span>
-            </li>
-        </ul>
-    </div>
-</div>
-        <section class="article">
-            <style type="text/css">/*!
+<!-- Main -->
+<article id="main">
+
+  <header class="special container">
+    <span class="icon fa-"></span>
+    <h2>Designing and Creating a Database</h2>
+    <!-- add page sub title here -->
+    <p>Posted on Tue 30 October 2018 by Jacob Sorensen</p>
+    <p></p>
+  </header>
+
+  <!-- One -->
+    <section class="wrapper style4 container">
+
+      <!-- Content -->
+        <div class="content">
+          <section>
+            <!-- <a href="#" class="image feature"><img src="images/pic04.jpg" alt="" /></a> -->
+            <h3>Posted in <a href="../../category/data-retrieval-and-storing/">Data Retrieval and Storing</a></h3>
+            <p class="tags">
+                <a href="../../tag/python.html">python</a>
+                <a href="../../tag/sql.html">SQL</a>
+                <a href="../../tag/sqlite.html">SQLite</a>
+                <a href="../../tag/normalization.html">normalization</a>
+                <a href="../../tag/database.html">database</a>
+                <a href="../../tag/primary-key.html">primary key</a>
+                <a href="../../tag/foreign-key.html">foreign key</a>
+</p>
+            <p><style type="text/css">/*!
 *
 * IPython notebook
 *
@@ -5459,137 +5464,86 @@ In order to insert this data cleanly, we'll need to use a <code>UNION</code> cla
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
-    
-        </section>
-    </div>
-</div>
-                </div>
-
-                <footer class="show-for-large-up">
-<div class="row">
-    <div class="small-6 medium-3 columns">
-        <ul class="left-nav">
-            <li><a href="../..">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
-            <li><a href="../../categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
-        </ul>
-    </div>
-    <div class="small-6 medium-3 medium-push-6 columns">
-        <ul class="right-nav">
-            <li><a href="http://jcbsorensen.github.io/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i>&nbsp; Feed</a></li>
-            <li><a href="../../archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
-        </ul>
-    </div>
-    <div class="small-12 medium-6 medium-pull-3 columns text-center">
-        <p class="tag-cloud">
-            <a href="../../tags.html"><i class="fa fa-tags"></i>&nbsp;Tags:</a>&nbsp;&nbsp;
-            &nbsp;&hellip;
-        </p>
-    </div>
-    <div class="small-12 columns sub-footer">
-        <hr>
-        <div class="small-12 medium-6 columns">
-            <p class="small-text-center medium-text-left">
-                &copy; 2018 Jacob Sørensen Creative Commons
-                <!-- <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
-            </p>
+</p>
+          </section>
         </div>
-        <div class="small-12 medium-6 columns">
-            <p class="small-text-center medium-text-right">
-                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
-            </p>
-        </div>
-    </div>
-</div>                </footer>
-            </div>
-            
-            <div class="image-pane main-content" style="background: url('../../images/background5.jpg'); background-size:cover; background-position: right;">
-                <div class="row">
-                    <div class="small-12 medium-4 large-12 columns">
-                        <h5 class='text-center'>About</h5>
-                        <div class="about-me">
-                            <div class="hide-for-medium-only small-3 columns no-buffer">
-                                <a class="th" href="../../images/MeSmall.jpg">
-                                    <img src="../../images/MeSmall.jpg">
-                                </a>
-                            </div>
-                            <div class="small-9 medium-12 large-9 columns text-justify">
-                                I am a Cand.Scient.Med with an extreme passion for data science. My interest started due to a combination of a very demanding biostatistics lectures throughout the 5 years of my education and hands-on 3-year data analytics experience in clinical research. Subsequently I worked as a Data Manager for 1 year in the big pharma industry. Thus, I am proficient in python, SAS and R.
-                            </div>
-                            <div class="small-12 columns">
-                                <ul class="inline-center social-list">
-                                    <li><a href="mailto:jcbsorensen@gmail.com"><i class="fa fa-envelope"></i>&nbsp; Email</a></li>
-                                    <li><a href="https://github.com/jcbsorensen"><i class="fa fa-github"></i>&nbsp; github</a></li>
-                                    <li><a href="https://www.linkedin.com/in/jcbsorensen/"><i class="fa fa-linkedin"></i>&nbsp; linkedin</a></li>
-                                    <li><a href="https://www.facebook.com/jcbsorensen"><i class="fa fa-facebook"></i>&nbsp; facebook</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="small-12 medium-4  large-12 columns link-list">
-                        <h5 class='text-center'>Links</h5>
-                        <ul class="inline-center">
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="https://www.dataquest.io/">DataQuest</a></li>
-                            <li><a href="https://www.kaggle.com/">Kaggle</a></li>
-                        </ul>
-                    </div>
+    </section>
 
-<!--
-                    <div class="small-12 medium-3 large-12 columns">
-                    </div>
--->
-               </div>
-            </div>
-        </div>
-        
-        
+    <!-- Two -->
+    <section class="wrapper style1 container special">
         <div class="row">
-            <footer class="hide-for-large-up">
-<div class="row">
-    <div class="small-6 medium-3 columns">
-        <ul class="left-nav">
-            <li><a href="../..">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
-            <li><a href="../../categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
-        </ul>
-    </div>
-    <div class="small-6 medium-3 medium-push-6 columns">
-        <ul class="right-nav">
-            <li><a href="http://jcbsorensen.github.io/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i>&nbsp; Feed</a></li>
-            <li><a href="../../archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
-        </ul>
-    </div>
-    <div class="small-12 medium-6 medium-pull-3 columns text-center">
-        <p class="tag-cloud">
-            <a href="../../tags.html"><i class="fa fa-tags"></i>&nbsp;Tags:</a>&nbsp;&nbsp;
-            &nbsp;&hellip;
-        </p>
-    </div>
-    <div class="small-12 columns sub-footer">
-        <hr>
-        <div class="small-12 medium-6 columns">
-            <p class="small-text-center medium-text-left">
-                &copy; 2018 Jacob Sørensen Creative Commons
-                <!-- <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
-            </p>
+          <div class="4u">
+
+            <section>
+              <span class="icon feature fa-"></span>
+              <header>
+                <a href="../../blog/Star_Wars" rel='bookmark'><h3>Cleaning the Star Wars Data</h3></a>
+              </header>
+              <p>/*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight</p>
+              <footer>
+                  <ul class="buttons">
+                      <li><a href="../../blog/Star_Wars" class="button small">Read More</a></li>
+                  </ul>
+              </footer>
+            </section>
+
+          </div>
+          <div class="4u">
+
+            <section>
+              <span class="icon feature fa-"></span>
+              <header>
+                <a href="../../blog/fandango" rel='bookmark'><h3>Investigating the Differences in Movie Ratings from Fandango</h3></a>
+              </header>
+              <p>/*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight</p>
+              <footer>
+                  <ul class="buttons">
+                      <li><a href="../../blog/fandango" class="button small">Read More</a></li>
+                  </ul>
+              </footer>
+            </section>
+
+          </div>
+          <div class="4u">
+
+            <section>
+              <span class="icon feature fa-"></span>
+              <header>
+                <a href="../../blog/High_School_Data" rel='bookmark'><h3>Analyzing High School Test Score Data</h3></a>
+              </header>
+              <p>/*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight</p>
+              <footer>
+                  <ul class="buttons">
+                      <li><a href="../../blog/High_School_Data" class="button small">Read More</a></li>
+                  </ul>
+              </footer>
+            </section>
+
+          </div>
         </div>
-        <div class="small-12 medium-6 columns">
-            <p class="small-text-center medium-text-right">
-                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
-            </p>
-        </div>
-    </div>
-</div>            </footer>
-        </div>
-        
-        
-        <script src="../../theme/js/jquery.min.js"></script>
-        <script src="../../theme/js/foundation.min.js"></script>
-        <script src="../../theme/js/app.js"></script>
-    </body>
-  
+    </section>
+  </article>
+
+
+
+<!-- Footer -->
+<footer id="footer">
+
+    <ul class="icons">
+        <li>
+          <a href="https://github.com/jcbsorensen" class="icon circle fa fa-github"><span class="label">github</span></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/jcbsorensen/" class="icon circle fa fa-linkedin"><span class="label">linkedin</span></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/jcbsorensen" class="icon circle fa fa-facebook"><span class="label">facebook</span></a>
+        </li>
+    </ul>
+
+    <span class="copyright">&copy; Untitled. All rights reserved. Design: <a href="http://html5up.net">HTML5 UP</a>.</span>
+
+</footer>
+</body>
 </html>
