@@ -3123,14 +3123,6 @@ memory usage: 9.5+ KB
 &lt;br&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;p&gt;By refering to this schema, I will walk through the rational behind the &lt;strong&gt;&lt;em&gt;particular choices&lt;/em&gt;&lt;/strong&gt;. We will start by creating the tables that do not contain any &lt;code&gt;foreign key&lt;/code&gt; relations. It is important to start with these tables, as other tables will have relations to these tables, and so these tables will need to exist first.&lt;/p&gt;
 &lt;p&gt;The tables we will create are below, with some notes on the normalization choices made:&lt;/p&gt;
