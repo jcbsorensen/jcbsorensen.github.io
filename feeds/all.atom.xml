@@ -2989,6 +2989,8 @@ memory usage: 9.5+ KB
 &lt;br&gt;
 &lt;br&gt;
 &lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;h2 id="-3.-Importing-Data-into-SQLite"&gt;&lt;a name="3" /&gt; 3. Importing Data into SQLite&lt;a class="anchor-link" href="#-3.-Importing-Data-into-SQLite"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;To insert data into a &lt;strong&gt;&lt;em&gt;normalized database&lt;/em&gt;&lt;/strong&gt;, we'll need a single column that can be used as a &lt;code&gt;primary key&lt;/code&gt;. The game log file does not have a single column that can be used as a primary key to uniquely identify each game. Fortunately, if we explore the Retrosheet site, we can find this &lt;a href="https://www.retrosheet.org/eventfile.htm"&gt;data dictionary&lt;/a&gt; for their event files, which list every event within each game. This includes the following description:&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;id:&lt;/strong&gt; Each game begins with a twelve character ID record which identifies the date, home team, and number of the game. For example, &lt;code&gt;ATL198304080&lt;/code&gt; should be read as follows. The &lt;strong&gt;first three&lt;/strong&gt; characters identify the home team (the Braves). The &lt;strong&gt;next four&lt;/strong&gt; are the year (1983). The &lt;strong&gt;next two&lt;/strong&gt; are the month (April) using the standard numeric notation, 04, &lt;strong&gt;followed by the day&lt;/strong&gt; (08). The &lt;strong&gt;last digit&lt;/strong&gt; indicates if this is a single game (0), first game (1) or second game (2) if more than one game is played during a day, usually a double header The id record starts the description of a game thus ending the description of the preceding game in the file.&lt;/p&gt;

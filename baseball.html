@@ -3070,6 +3070,8 @@ memory usage: 9.5+ KB
 <br>
 <br>
 <br>
+<br>
+<br>
 <br></p>
 <h2 id="-3.-Importing-Data-into-SQLite"><a name="3" /> 3. Importing Data into SQLite<a class="anchor-link" href="#-3.-Importing-Data-into-SQLite">&#182;</a></h2><p>To insert data into a <strong><em>normalized database</em></strong>, we'll need a single column that can be used as a <code>primary key</code>. The game log file does not have a single column that can be used as a primary key to uniquely identify each game. Fortunately, if we explore the Retrosheet site, we can find this <a href="https://www.retrosheet.org/eventfile.htm">data dictionary</a> for their event files, which list every event within each game. This includes the following description:</p>
 <blockquote><p><strong>id:</strong> Each game begins with a twelve character ID record which identifies the date, home team, and number of the game. For example, <code>ATL198304080</code> should be read as follows. The <strong>first three</strong> characters identify the home team (the Braves). The <strong>next four</strong> are the year (1983). The <strong>next two</strong> are the month (April) using the standard numeric notation, 04, <strong>followed by the day</strong> (08). The <strong>last digit</strong> indicates if this is a single game (0), first game (1) or second game (2) if more than one game is played during a day, usually a double header The id record starts the description of a game thus ending the description of the preceding game in the file.</p>
